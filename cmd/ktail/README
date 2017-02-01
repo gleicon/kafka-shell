@@ -1,0 +1,6 @@
+## KTail
+
+	Kafka topic tail. Consumes messages from a given topic and prints them.
+	$ ktail -n 100 -f my.dear.topic -s kafka-server-1,kafka-server-2
+
+

@@ -1,0 +1,8 @@
+## KTee
+
+	Kafka topic producer for shell scripts. Consumes stdin, send to kafka topic. 
+	Can echo back to stdout.
+
+	$ echo '{"message":"yello"}' | ktee my.dear.topic -s kafka-server-1,kafka-server-2
+
+
