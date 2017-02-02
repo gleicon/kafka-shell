@@ -2,3 +2,4 @@
 bin/*
 cmd/ktail/ktail
 cmd/ktee/ktee
+*.tar.gz

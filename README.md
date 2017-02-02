@@ -1,7 +1,7 @@
 ## Building
 
-$ make all
-$ make install
+	$ make all
+	$ make install
 
 ## Usage
 ### ktail

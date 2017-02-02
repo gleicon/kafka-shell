@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"os/signal"
 	"strings"
 	"sync"
 
@@ -17,10 +16,10 @@ var wg sync.WaitGroup
 
 func help() {
 	fmt.Println("Usage: ktail [-s ip:port] [-n <offset] [-f] <topic>")
-	fmt.Println("KTail  consumes and print messages from a kafka topic.")
+	fmt.Println("KTee sends stdin to kafka and to stdout (can be disabled)")
 	fmt.Println("-s broker(s) separated by comma. Defaults to localhost:9092")
-	fmt.Println("-n offset. Defaults to most recent.")
-	fmt.Println("-f that tail-ish thing that keeps waiting for new lines etc")
+	fmt.Println("-r max retries to send data")
+	fmt.Println("-o prints stdin to stdout before sending to kafka")
 	fmt.Println("-d debug info")
 	os.Exit(1)
 }
@@ -51,11 +50,12 @@ func main() {
 	config := sarama.NewConfig()
 	config.Producer.Retry.Max = *retries
 	config.Producer.RequiredAcks = sarama.WaitForAll
+	config.Producer.Return.Successes = true
 
-	signals := make(chan os.Signal, 1)
-	signal.Notify(signals, os.Interrupt)
+	//	signals := make(chan os.Signal, 1)
+	//	signal.Notify(signals, os.Interrupt)
 	brokerList := strings.Split(*brokers, ",")
 
 	startProducer(brokerList, config, *stdout, topic)
-
+	wg.Wait()
 }
