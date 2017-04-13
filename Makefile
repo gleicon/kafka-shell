@@ -3,8 +3,7 @@ deps:
 	make -C cmd/ktee deps
 
 all:
-	make -C cmd/ktail
-	make -C cmd/ktee
+	make -C cmd/
 
 install:
 	@cp cmd/ktail/ktail bin/

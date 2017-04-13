@@ -2,4 +2,6 @@
 bin/*
 cmd/ktail/ktail
 cmd/ktee/ktee
+cmd/kafka2graphite/kafka2graphite
+cmd/ktail/ktail-linux
 *.tar.gz

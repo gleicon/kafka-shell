@@ -19,12 +19,12 @@ func startConsumer(brokers []string, offset int64, foption bool, topic string) {
 
 	consumer, err := sarama.NewConsumer(brokers, nil)
 	if err != nil {
-		log.Println("kafka error: ", err)
+		log.Println("kafka consumer error: ", err)
 		os.Exit(-1)
 	}
 
 	if partitionList, err = consumer.Partitions(topic); err != nil {
-		log.Println("kafka error: ", err)
+		log.Println("kafka partition error: ", err)
 		os.Exit(-1)
 
 	}
@@ -66,6 +66,7 @@ func startConsumer(brokers []string, offset int64, foption bool, topic string) {
 				// exit when messages are drained
 
 				if !foption {
+					log.Println("Leaving")
 					break
 				}
 

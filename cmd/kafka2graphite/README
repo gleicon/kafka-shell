@@ -1,0 +1,4 @@
+## kafka2graphite
+
+	Consumes a kafka topic and push an atribute to graphite.
+	$ kafka2graphite -t my.dear.topic -a my_attribute -g localhost:2003/my.dear.topic.myattribute -s kafka-server-1,kafka-server-2
